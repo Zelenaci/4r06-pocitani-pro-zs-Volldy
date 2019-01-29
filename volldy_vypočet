@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 22 10:29:56 2019
+
+@author: vol35098
+"""
+
+import tkinter as tk
+from tkinter import LabelFrame, Radiobutton, Entry, Label
+
+class Application(tk.Tk):
+    name = 'Výpočet'
+    
+    
+    def __init__(self):
+        super().__init__(className=self.name)
+        self.title(self.name)
+        
+        
+        ###------FUNKCE------###
+        self.funkceFrame = LabelFrame(self, text = "FUNKCE", padx=5, pady=5)
+        self.funkceFrame.pack(anchor=tk.W)
+        self.znamenkoVar= tk.StringVar()
+        ##
+        Radiobutton(self.funkceFrame, text = '+', variable=self.znamenkoVar, value='+').pack()
+        Radiobutton(self.funkceFrame, text = '-', variable=self.znamenkoVar, value='-').pack()
+        Radiobutton(self.funkceFrame, text = '*', variable=self.znamenkoVar, value='*').pack()
+        Radiobutton(self.funkceFrame, text = '/', variable=self.znamenkoVar, value='/').pack()
+        
+        ###------FUNKCE------###
+        
+        ###------CISLA------###
+        self.cisloFrame = LabelFrame(self,padx=5,pady=5)
+        self.cisloFrame.pack(anchor=tk.W)
+        ###
+        self.cisloA = Entry(self.cisloFrame, state='readonly', width='3')
+        self.cisloA.grid(row=4, column=3)
+        
+        self.znamenko = Label(self.cisloFrame, textvariable=self.znamenkoVar, width='3')
+        self.znamenko.grid(row=4, column=4)
+        
+        self.cisloB = Entry(self.cisloFrame, state='readonly', width='3')
+        self.cisloB.grid(row=4, column=5)
+        
+        self.rovnitko = Label(self.cisloFrame, text='=', width='3')
+        self.rovnitko.grid(row=4, column=6)
+        
+        self.vysledek = Entry(self.cisloFrame, state='readonly', width='3')
+        self.vysledek.grid(row=4, column=7)
+        ###------CISLA------###
+        
+        ###------HODNOCENI------###
+        self.hodnoceFrame = LabelFrame(self, text='HODNOCENÍ', padx=5, pady=5)
+        self.funkceFrame.pack(anchor=tk.W)
+        ###------HODNOCENI------###
+        
+        ###------PROMENA------###
+        self.znamenkoVar.trace('w', self.znamenkoVar)
+        
+        
+        
+        
+            
+        
+        
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+app = Application()
+app.mainloop()

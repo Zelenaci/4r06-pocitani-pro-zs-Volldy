@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Label, LabelFrame, Radiobutton, Entry
+from tkinter import Label, LabelFrame, Radiobutton, Entry, Button
 from random import randint
 
 start = tk.Tk()
@@ -24,7 +24,7 @@ Radiobutton(znamenka, value="+", variable=znamenko, command=vyberznamenka).pack(
 Radiobutton(znamenka, value="-", variable=znamenko, command=vyberznamenka).pack()
 Radiobutton(znamenka, value="*", variable=znamenko, command=vyberznamenka).pack()
 Radiobutton(znamenka, value="/", variable=znamenko, command=vyberznamenka).pack()
-
+novejpriklad=Button(znamenka, text="Začni na novo", command=priklady, width=5)
 
 #přiklad
 cisloAentry=Entry(priklad, width=4, state="readonly")
@@ -55,7 +55,7 @@ statLabel.grid(row=3)
 def vyberznamenka():
     selection=str(znamenko.get())
     matematickaoperaceLabel.config(text=selection)
-    newpriklad.invoke()
+    novejpriklad.invoke()
 
 def priklady():
     if matematickaoperaceLabel ['text'] == "+":
@@ -94,18 +94,18 @@ def kontrola():
         if vysledek == int(vys):
             dobre+=1
             celkem+=1
-            newpriklad.invoke()
+            novejpriklad.invoke()
             vysledekEntry.delete(0)
             hlavni.title("Počítání pro základní školy")
         if vysledek != int(vys):
             celkem+=1
-            newpriklad.invoke()
+            novejpriklad.invoke()
             vysledekEntry.delete(0)
             hlavni.title("Počítání pro základní školy")
     except:
         hlavni.title("Ty jsi chobot")
         celkem+=1
-        newpriklad.invoke()
+        novejpriklad.invoke()
     statLabel.config(text='{0}/{1}'.format(dobre,celkem))
 
 
